@@ -78,7 +78,7 @@ namespace kls::thread {
 
 #elif __has_include(<Windows.h>)
 
-#include "Internal/system.h"
+#include "kls/hal/System.h"
 
 namespace kls::thread {
     class Semaphore {
@@ -109,7 +109,7 @@ namespace kls::thread {
         HANDLE handle;
 
         bool timed_wait(const long long ms) noexcept {
-            return WaitForSingleObject(handle, ms) != WAIT_TIMEOUT;
+            return WaitForSingleObject(handle, static_cast<DWORD>(ms)) != WAIT_TIMEOUT;
         }
     };
 }
