@@ -24,9 +24,10 @@
 
 #include <atomic>
 #include "SpinWait.h"
+#include "kls/Object.h"
 
 namespace kls::thread {
-    class SpinLock {
+    class SpinLock: public AddressSensitive {
     public:
         void lock() noexcept {
             for (;;) {
